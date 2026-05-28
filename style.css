@@ -1,0 +1,588 @@
+
+   AFRICAN ROOTS — External Stylesheet (style.css)
+   Covers: Base styles · Typography · Layout · Visual styles
+           Pseudo-classes · Responsive design (media queries)
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. CSS RESET / BASE STYLES
+   ---------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colour palette */
+  --clr-earth:      #8B4513;   /* Saddle Brown  */
+  --clr-gold:       #D4A017;   /* African Gold  */
+  --clr-deep:       #2C1A0E;   /* Dark Espresso */
+  --clr-sand:       #F5E6C8;   /* Warm Sand     */
+  --clr-accent:     #C0392B;   /* Kente Red     */
+  --clr-green:      #2E7D32;   /* Savanna Green */
+  --clr-white:      #FFFFFF;
+  --clr-light-bg:   #FDF6EC;
+
+  /* Typography scale */
+  --font-display:   'Georgia', 'Times New Roman', serif;
+  --font-body:      'Trebuchet MS', 'Gill Sans', sans-serif;
+
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-md:   1.125rem;
+  --fs-lg:   1.5rem;
+  --fs-xl:   2rem;
+  --fs-2xl:  2.75rem;
+  --fs-3xl:  3.5rem;
+
+  /* Spacing */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+
+  /* Borders / Shadows */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --shadow-sm:  0 2px 6px rgba(0,0,0,0.15);
+  --shadow-md:  0 6px 20px rgba(0,0,0,0.2);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.25);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  color: #1b120a;
+  min-height: 100vh;
+
+
+  /* Naturistic background (uses your existing image) */
+  background-color: var(--clr-light-bg);
+  background-image:
+    linear-gradient(135deg, rgba(245,230,200,0.92), rgba(139,69,19,0.10)),
+    url("css/img/1000549441.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ----------------------------------------------------------
+   2. TYPOGRAPHY STYLES
+   ---------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--clr-earth);
+}
+
+h1 {
+  font-size: var(--fs-2xl);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h2 {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-sm);
+  position: relative;
+  padding-bottom: var(--space-xs);
+}
+
+/* Decorative underline for headings */
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--clr-gold);
+  margin-top: 0.4rem;
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-xs);
+}
+
+p {
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-sm);
+  max-width: 70ch;
+}
+
+/* ----------------------------------------------------------
+   3. HEADER / NAVIGATION
+   ---------------------------------------------------------- */
+header {
+  background: linear-gradient(135deg, rgba(44,26,14,0.92), rgba(139,69,19,0.70));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212,160,23,0.35);
+  border-radius: 14px;
+  margin: 14px auto 18px;
+  width: min(1200px, calc(100% - 24px));
+
+
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  border-bottom: 3px solid var(--clr-gold);
+}
+
+header a {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-sand);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+/* Pseudo-classes for interactivity */
+header a:hover {
+  background-color: var(--clr-gold);
+  color: var(--clr-deep);
+  transform: translateY(-2px);
+}
+
+header a:focus {
+  outline: 2px solid var(--clr-gold);
+  outline-offset: 3px;
+}
+
+header a:active {
+  transform: translateY(0);
+  background-color: var(--clr-accent);
+  color: var(--clr-white);
+}
+
+/* ----------------------------------------------------------
+   4. HERO / BANNER IMAGE
+   ---------------------------------------------------------- */
+.hero-img,
+header > img,
+body > header img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ----------------------------------------------------------
+   5. MAIN CONTENT LAYOUT  (Flexbox + Grid)
+   ---------------------------------------------------------- */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+section {
+  margin-bottom: var(--space-xl);
+}
+
+/* Service page: pink writing */
+service.html h2,
+service.html ul li {
+  color: #ff4fa6;
+}
+
+body h2,
+body ul li {
+  /* default (keep readable) */
+  color: inherit;
+}
+
+
+
+/* Two-column grid for index page content block */
+section > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* Single-column override for text-only divs */
+section > div:only-child,
+section > div:last-child {
+  grid-template-columns: 1fr;
+}
+
+/* ----------------------------------------------------------
+   6. ABOUT PAGE SECTIONS
+   ---------------------------------------------------------- */
+.mission-card,
+.vision-card {
+  background: var(--clr-white);
+  border-left: 5px solid var(--clr-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-lg);
+}
+
+/* Give plain section elements card-like treatment on about page */
+body section {
+  background: var(--clr-white);
+  border-left: 5px solid var(--clr-earth);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  max-width: 900px;
+  margin: var(--space-md) auto var(--space-lg);
+}
+
+body section:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* ----------------------------------------------------------
+   7. WHY CHOOSE US — SERVICES LIST
+   ---------------------------------------------------------- */
+ul li {
+  position: relative;
+  padding-left: var(--space-md);
+  margin-bottom: var(--space-xs);
+  font-size: var(--fs-md);
+  color: var(--clr-deep);
+}
+
+ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--clr-gold);
+  font-size: var(--fs-sm);
+  top: 0.15rem;
+}
+
+/* ----------------------------------------------------------
+   8. CONTACT PAGE
+   ---------------------------------------------------------- */
+.contact-wrapper,
+body > ul {
+  max-width: 600px;
+  margin: var(--space-lg) auto;
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  border-top: 6px solid var(--clr-earth);
+}
+
+body > h2 {
+  text-align: center;
+  margin: var(--space-lg) auto var(--space-sm);
+  color: var(--clr-earth);
+}
+
+/* ----------------------------------------------------------
+   9. ENQUIRY FORM
+   ---------------------------------------------------------- */
+form {
+  max-width: 600px;
+  margin: var(--space-lg) auto;
+  background: var(--clr-white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border-top: 6px solid var(--clr-gold);
+}
+
+form label {
+  display: block;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--clr-earth);
+  margin-bottom: 0.3rem;
+}
+
+form input[type="text"],
+form input[type="Email"],
+form input[type="tel"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 0.65rem var(--space-sm);
+  border: 2px solid #D5C5A8;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  background: var(--clr-light-bg);
+  color: var(--clr-deep);
+  margin-bottom: var(--space-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--clr-gold);
+  box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.2);
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+form input[type="submit"] {
+  background-color: var(--clr-earth);
+  color: var(--clr-white);
+  border: none;
+  padding: 0.75rem var(--space-lg);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--clr-gold);
+  color: var(--clr-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+form input[type="submit"]:active {
+  transform: translateY(0);
+  background-color: var(--clr-accent);
+}
+
+/* ----------------------------------------------------------
+   10. HERO WELCOME SECTION (Index.html)
+   ---------------------------------------------------------- */
+h1 {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md) var(--space-sm);
+  background: linear-gradient(135deg, var(--clr-deep) 0%, var(--clr-earth) 100%);
+  color: var(--clr-gold);
+  letter-spacing: 0.1em;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ----------------------------------------------------------
+   11. FOOTER
+   ---------------------------------------------------------- */
+footer {
+  background-color: var(--clr-deep);
+  color: var(--clr-sand);
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  margin-top: var(--space-xl);
+  border-top: 4px solid var(--clr-gold);
+}
+
+footer p {
+  max-width: 100%;
+  font-size: var(--fs-sm);
+  margin-bottom: 0.4rem;
+  color: var(--clr-sand);
+}
+
+footer p:first-child {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--clr-gold);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+/* ----------------------------------------------------------
+   12. UTILITY / VISUAL STYLES
+   ---------------------------------------------------------- */
+/* Box shadows on images */
+img {
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+img:hover {
+  box-shadow: var(--shadow-md);
+  transform: scale(1.01);
+}
+
+/* Decorative horizontal rule */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--clr-gold), transparent);
+  margin: var(--space-lg) 0;
+}
+
+/* ----------------------------------------------------------
+   13. RESPONSIVE DESIGN — MEDIA QUERIES
+   ---------------------------------------------------------- */
+
+/* ---- Tablet: 768px and below ---- */
+@media (max-width: 768px) {
+  :root {
+    --fs-2xl: 2rem;
+    --fs-xl:  1.6rem;
+    --fs-lg:  1.25rem;
+  }
+
+  header {
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+  }
+
+  header a {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  h1 {
+    font-size: var(--fs-xl);
+    padding: var(--space-md);
+  }
+
+  /* Stack two-column grid to single column */
+  section > div {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  main {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  form,
+  body > ul {
+    padding: var(--space-md);
+    margin: var(--space-sm);
+  }
+
+  .hero-img,
+  header > img {
+    max-height: 280px;
+  }
+}
+
+/* ---- Mobile: 480px and below ---- */
+@media (max-width: 480px) {
+  :root {
+    --fs-2xl: 1.6rem;
+    --fs-xl:  1.35rem;
+    --fs-md:  1rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-xs);
+    gap: 0.25rem;
+  }
+
+  header a {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  body section {
+    padding: var(--space-sm);
+    margin: var(--space-sm) var(--space-xs);
+  }
+
+  form {
+    padding: var(--space-sm);
+    margin: var(--space-sm) var(--space-xs);
+  }
+
+  form input[type="submit"] {
+    font-size: var(--fs-sm);
+  }
+
+  footer {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .hero-img,
+  header > img {
+    max-height: 200px;
+  }
+
+  ul li {
+    font-size: var(--fs-base);
+  }
+}
+
+/* ---- Large desktop: 1200px and above ---- */
+@media (min-width: 1200px) {
+  main {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  section > div {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  h1 {
+    font-size: var(--fs-3xl);
+  }
+}
+
