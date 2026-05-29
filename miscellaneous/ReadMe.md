@@ -1,5 +1,5 @@
 ## website description
-This website about connecting people which are different tribes by both enganging in thier traditional activities and others as well. We also help you love yourself and to know your roots as well as what the diversity 0f African holds.
+The main aim for this website is to connect and empower everyone with their past and other tribes traditional activities and culture.
    
 
 
@@ -9,7 +9,8 @@ This website about connecting people which are different tribes by both engangin
 - infromation about AFRICAN ROOTS
 - contact and enquiry
 
-## sturcture 
+## project structure
+This website is aboubt connecting you people of different tribes conncting with other tribes through embracing tradition,and culture.
 
 
 
